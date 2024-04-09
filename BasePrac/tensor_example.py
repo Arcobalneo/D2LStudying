@@ -53,9 +53,16 @@ print(torch.sum(x))
 # endregion
 
 # region tensor op between different shape
-a = torch.arange(3).reshape((3, 1))
-b = torch.tensor([0,-1,-2])
-print(a+b)  # 把3X1和1X2矩阵，相加得到3X2，相加之前会先各自copy行或列拓展到3X2
+print("tensor op between different shape")
+a = torch.arange(16).reshape((4, 2,2))
+b = torch.tensor(
+    [
+        [99,98],
+        [97,96]
+    ])
+c = a+b
+print(c)  # 4X2X2和2X1X2矩阵，相加之前会先各自copy行或列拓展
+print(c.shape)  # 相加得到4X2X2，即运算双方shape较大的一方(维数需要相同)
 # endregion
 
 # region tensor index
@@ -91,7 +98,7 @@ print(type(a))
 b = torch.tensor(a)
 print(type(b))
 
-# 大小为1 转 单个标量
+# 大小为1 转 单个标量123
 t = torch.tensor([3.99])
 print(t)
 print(t.item())
