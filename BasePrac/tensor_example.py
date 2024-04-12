@@ -104,3 +104,5 @@ print(t)
 print(t.item())
 print(float(t))
 # endregion
+
+print(help(torch.ones))
